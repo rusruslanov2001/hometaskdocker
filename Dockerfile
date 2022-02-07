@@ -1,10 +1,9 @@
 FROM ubuntu:20.04
-EXPOSE 8080
-RUN apt-get update
-RUN apt-get install default-jdk -y
-RUN apt-get install tomcat9 -y
-RUN apt-get install git -y
-RUN mvn pacakge
-RUN cd /tmp/boxfuse-sample-java-war-hello
+RUN apt-get install -y default-jdk
+RUN apt-get install -y tomcat9
+RUN apt-get install -y git
+RUN apt-get install -y maven
+RUN mvn package
 ADD hello-1.0.war /var/lib/tomcat9/webapps
+EXPOSE 8080
 CMD ["catalina.sh", "run"]
